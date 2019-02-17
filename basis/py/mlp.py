@@ -113,16 +113,16 @@ M, input_size, hidden_size, output_size = 64, 1000, 100, 10
 
 # 生成随机数当作样本，同时用Variable 来包装这些数据，设置 requires_grad=False 表示在方向传播的时候，
 # 我们不需要求这几个 Variable 的导数
-x = Variable(torch.randn(M, input_size), requires_grad=False)
-y = Variable(torch.randn(M, output_size), requires_grad=False)
+x = torch.randn(M, input_size, requires_grad=False)
+y = torch.randn(M, output_size, requires_grad=False)
 
 # 参数初始化，同时用Variable 来包装这些数据，设置 requires_grad=True 表示在方向传播的时候，
 # 我们需要自动求这几个 Variable 的导数
 def init_parameters():
-    w1 = Variable(torch.randn(input_size, hidden_size), requires_grad=True)
-    w2 = Variable(torch.randn(hidden_size, output_size), requires_grad=True)
-    b1 = Variable(torch.randn(1, hidden_size), requires_grad=True)
-    b2 = Variable(torch.randn(1, output_size), requires_grad=True)
+    w1 = torch.randn(input_size, hidden_size, requires_grad=True)
+    w2 = torch.randn(hidden_size, output_size, requires_grad=True)
+    b1 = torch.randn(1, hidden_size, requires_grad=True)
+    b2 = torch.randn(1, output_size, requires_grad=True)
     return {"w1": w1, "w2":w2, "b1": b1, "b2": b2}
 
 # 向前传播
@@ -154,7 +154,7 @@ for t in range(EPOCH):
     # 它的size() 是 (1,)，所以 loss.data 的size() 也是 (1,)
     # 所以， loss.data[0] 才是一个实值
     if (t+1) % 50 == 0:
-        print(loss.data[0])
+        print(loss.item())
     # 使用自动求导来计算反向传播过程中的梯度，这个方法会把所有的设置了requires_grad=True 的Variable 对象的梯度全部自动出来
     # 在这里，就是求出了 w1, w2, b1, b2的梯度
     loss.backward()
@@ -190,8 +190,8 @@ M, input_size, hidden_size, output_size = 64, 1000, 100, 10
 
 # 生成随机数当作样本，同时用Variable 来包装这些数据，设置 requires_grad=False 表示在方向传播的时候，
 # 我们不需要求这几个 Variable 的导数
-x = Variable(torch.randn(M, input_size))
-y = Variable(torch.randn(M, output_size))
+x = torch.randn(M, input_size)
+y = torch.randn(M, output_size)
 
 # 使用 nn 包的 Sequential 来快速构建模型，Sequential可以看成一个组件的容器。
 # 它涵盖神经网络中的很多层，并将这些层组合在一起构成一个模型.
@@ -227,7 +227,7 @@ for t in range(EPOCH):
     
     # 显示损失
     if (t+1) % 50 == 0:
-        print(loss.data[0])
+        print(loss.item())
     
     # 在我们进行梯度更新之前，先使用optimier对象提供的清除已经积累的梯度。
     optimizer.zero_grad()
@@ -287,8 +287,8 @@ M, input_size, hidden_size, output_size = 64, 1000, 100, 10
 
 # 生成随机数当作样本，同时用Variable 来包装这些数据，设置 requires_grad=False 表示在方向传播的时候，
 # 我们不需要求这几个 Variable 的导数
-x = Variable(torch.randn(M, input_size))
-y = Variable(torch.randn(M, output_size))
+x = torch.randn(M, input_size)
+y = torch.randn(M, output_size)
 
 
 model = TwoLayerNet(input_size, hidden_size, output_size)
@@ -316,7 +316,7 @@ for t in range(EPOCH):
     
     # 显示损失
     if (t+1) % 50 == 0:
-        print(loss.data[0])
+        print(loss.item())
     
     # 在我们进行梯度更新之前，先使用optimier对象提供的清除已经积累的梯度。
     optimizer.zero_grad()
