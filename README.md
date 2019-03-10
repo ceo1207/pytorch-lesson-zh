@@ -1,18 +1,15 @@
 # pytorch 包教不包会
 
-pytorch-tutorial-zh
-
-雏鹰起飞部分是为了能够快速上手PyTorch
+pytorch-tutorial-zh 原库使用旧版的pytorch, 自己边学边看，修改了部分代码，以适用pytorch 1.0
 
 小试牛刀部分则是用来练手的模型，大部分都是对论文工作的复现，或者是一些有意思的例子。
 
 为了避免 jupyter notebook 加载过慢，可以直接选择看 .py 文件，代码和 notebook 中基本一样，只是少了一些图示说明罢了。
 
 ## 如何安装Pytorch?
+参见官网，使用pip、conda等一键安装
 
-安装 Pytorch 0.4.0版本，linux、windows 下可以通过这个 [Pytorch官网](http://pytorch.org/)
-
-## 一、雏鹰起飞
+## 一、速成
 
 | Content    | .ipynb 文件  |  .py 文件 |
 | ------------------ | :---------------------: | :--------------------------: |
@@ -116,8 +113,7 @@ PyTorch 0.3.0
 
 
 ## Reference
-
-[PyTorch官方docs 0.2.0版本](http://pytorch.org/docs/0.2.0/)
+[PyTorch官方Doc](https://pytorch.org/docs/stable/index.html)
 
 [PyTorch官方tutorial](http://pytorch.org/tutorials/)
 
