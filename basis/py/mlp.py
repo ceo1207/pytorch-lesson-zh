@@ -395,7 +395,7 @@ for t in range(EPOCH):
     
     # 显示损失
     if (t+1) % 50 == 0:
-        print(loss.data[0])
+        print(loss.item())
     
     # 在我们进行梯度更新之前，先使用optimier对象提供的清除已经积累的梯度。
     optimizer.zero_grad()

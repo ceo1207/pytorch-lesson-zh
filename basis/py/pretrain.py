@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 # 参数初始化
 class LeNet5(nn.Module):

@@ -7,7 +7,7 @@ from torch.utils.data import Dataset, DataLoader, TensorDataset
 from torch.autograd import Variable
 import numpy as np
 
-xy = np.loadtxt('../dataSet/diabetes.csv.gz', delimiter=',', dtype=np.float32) # 使用numpy读取数据
+xy = np.loadtxt('../../dataSet/diabetes.csv.gz', delimiter=',', dtype=np.float32) # 使用numpy读取数据
 x_data = torch.from_numpy(xy[:, 0:-1])
 y_data = torch.from_numpy(xy[:, [-1]])
 
@@ -38,6 +38,7 @@ for epoch in range(2):
 
 # 接下来，我们来继承 Dataset类 ，写一个将数据处理成DataLoader的类。
 # 当我们集成了一个 Dataset类之后，我们需要重写 __len__ 方法，该方法提供了dataset的大小； __getitem__ 方法， 该方法支持从 0 到 len(self)的索引
+
 
 class DealDataset(Dataset):
     """
